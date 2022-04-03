@@ -56,11 +56,11 @@
                         android:showDividers="middle">
 
                         <include
-                            android:id="includeItemProductsPrice"
+                            android:id="@+id/includeItemProductsPrice"
                             layout="@layout/item_price" />
 
                         <include
-                            android:id="includeItemDeliveryFee"
+                            android:id="@+id/includeItemDeliveryFee"
                             layout="@layout/item_price" />
 
                         <com.google.android.flexbox.FlexboxLayout
