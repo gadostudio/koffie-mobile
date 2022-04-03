@@ -15,7 +15,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Enter phone number" />
+            android:text="Enter code sent to your phone" />
 
         <EditText
             android:id="@+id/editTextPhone"

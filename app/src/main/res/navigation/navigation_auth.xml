@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/auth_navigation"
+    app:startDestination="@id/navigation_home">
+
+    <navigation
+        android:id="@+id/navigation_home"
+        android:label="Auth"
+        app:startDestination="@id/navigation_auth_signin">
+        <fragment
+            android:id="@+id/navigation_auth_signin"
+            android:name="id.shaderboi.koffie.ui.auth.SignInFragment"
+            tools:layout="@layout/fragment_signin">
+            <action
+                android:id="@+id/action_navigation_auth_signin_to_navigation_auth_verify"
+                app:destination="@id/navigation_auth_verify" />
+        </fragment>
+        <fragment
+            android:id="@+id/navigation_auth_verify"
+            android:name="id.shaderboi.koffie.ui.auth.VerifyFragment"
+            tools:layout="@layout/fragment_verify">
+            <action
+                android:id="@+id/action_navigation_auth_verify_to_navigation_auth_register"
+                app:destination="@id/navigation_auth_registration" />
+        </fragment>
+
+        <fragment
+            android:id="@+id/navigation_auth_registration"
+            android:name="id.shaderboi.koffie.ui.auth.RegistrationFragment"
+            tools:layout="@layout/fragment_registration" />
+    </navigation>
+
+</navigation>

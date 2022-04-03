@@ -1,10 +1,11 @@
 plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
-    id 'kotlin-kapt'
+    id "com.android.application"
+    id "kotlin-android"
+    id "kotlin-kapt"
     id "dagger.hilt.android.plugin"
-    id 'com.google.gms.google-services'
-    id 'com.google.firebase.crashlytics'
+    id "com.google.gms.google-services"
+    id "com.google.firebase.crashlytics"
+    id "androidx.navigation.safeargs.kotlin"
 }
 
 apply from: 'script/versioning.gradle'
@@ -70,6 +71,8 @@ dependencies {
 
     // Serializer & deserializer
     implementation "com.squareup.moshi:moshi:$moshiVersion"
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.1'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.4.1'
     kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
 
     // Hilt
@@ -82,11 +85,9 @@ dependencies {
     // Logger
     implementation 'com.jakewharton.timber:timber:5.0.1'
 
-
+    implementation 'com.google.firebase:firebase-appcheck-safetynet:16.0.0-beta05'
     implementation "androidx.core:core-splashscreen:1.0.0-beta02"
-
     implementation "com.airbnb.android:lottie:$lottieVersion"
-
     implementation "androidx.preference:preference-ktx:1.2.0"
 
 //    debugImplementation "com.midtrans:uikit:1.31.0-SANDBOX"
