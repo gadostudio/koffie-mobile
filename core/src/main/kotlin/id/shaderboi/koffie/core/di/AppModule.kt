@@ -8,6 +8,8 @@ import id.shaderboi.koffie.core.BuildConfig
 import id.shaderboi.koffie.core.data.auth.Auth
 import id.shaderboi.koffie.core.data.auth.AuthFirebase
 import id.shaderboi.koffie.core.data.data_source.network.KoffieAPIService
+import id.shaderboi.koffie.core.data.repository.VendorRepositoryImpl
+import id.shaderboi.koffie.core.domain.repository.VendorRepository
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -37,4 +39,9 @@ object AppModule {
     @Singleton
     @Provides
     fun provideAuth(): Auth = AuthFirebase()
+
+    @Singleton
+    @Provides
+    fun provideVendorRepository(koffieAPIService: KoffieAPIService): VendorRepository =
+        VendorRepositoryImpl(koffieAPIService)
 }
