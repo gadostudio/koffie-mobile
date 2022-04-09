@@ -50,6 +50,8 @@ android {
 }
 
 dependencies {
+    implementation project(":core")
+
     // Lifecycle
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"

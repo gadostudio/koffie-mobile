@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/auth_navigation"
-    app:startDestination="@id/navigation_home">
+    app:startDestination="@id/navigation_auth">
 
     <navigation
-        android:id="@+id/navigation_home"
+        android:id="@+id/navigation_auth"
         android:label="Auth"
         app:startDestination="@id/navigation_auth_signin">
         <fragment
             android:id="@+id/navigation_auth_signin"
-            android:name="id.shaderboi.koffie.ui.auth.SignInFragment"
+            android:name="id.shaderboi.koffie.ui.auth.signin.SignInFragment"
             tools:layout="@layout/fragment_signin">
             <action
                 android:id="@+id/action_navigation_auth_signin_to_navigation_auth_verify"
@@ -19,7 +19,7 @@
         </fragment>
         <fragment
             android:id="@+id/navigation_auth_verify"
-            android:name="id.shaderboi.koffie.ui.auth.VerifyFragment"
+            android:name="id.shaderboi.koffie.ui.auth.verify.VerifyFragment"
             tools:layout="@layout/fragment_verify">
             <action
                 android:id="@+id/action_navigation_auth_verify_to_navigation_auth_register"
@@ -28,7 +28,7 @@
 
         <fragment
             android:id="@+id/navigation_auth_registration"
-            android:name="id.shaderboi.koffie.ui.auth.RegistrationFragment"
+            android:name="id.shaderboi.koffie.ui.auth.registration.RegistrationFragment"
             tools:layout="@layout/fragment_registration" />
     </navigation>
 

@@ -18,14 +18,14 @@
             android:text="Enter phone number" />
 
         <EditText
-            android:id="@+id/editTextPhone"
+            android:id="@+id/editTextVerificationCode1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="phone" />
 
         <Button
-            android:id="@+id/buttonSignIn"
+            android:id="@+id/buttonSignInSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Button" />

@@ -1,33 +1,23 @@
-package id.shaderboi.koffie.ui.auth
+package id.shaderboi.koffie.ui.auth.signin
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import com.google.firebase.FirebaseException
-import com.google.firebase.auth.*
 import dagger.hilt.android.AndroidEntryPoint
 import id.shaderboi.koffie.databinding.FragmentSigninBinding
-import id.shaderboi.koffie.ui.auth.view_model.SignInEvent
-import id.shaderboi.koffie.ui.auth.view_model.SignInViewModel
-import id.shaderboi.koffie.ui.main.MainActivity
-import java.util.concurrent.TimeUnit
-import javax.inject.Inject
+import id.shaderboi.koffie.ui.common.view_model.AuthEvent
+import id.shaderboi.koffie.ui.common.view_model.AuthViewModel
 
 @AndroidEntryPoint
 class SignInFragment : Fragment() {
     private var _binding: FragmentSigninBinding? = null
     val binding get() = _binding!!
 
-    @Inject
-    lateinit var firebaseAuth: FirebaseAuth
-
-    private val signInViewModel by activityViewModels<SignInViewModel>()
+    private val signInViewModel by activityViewModels<AuthViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,10 +33,10 @@ class SignInFragment : Fragment() {
 
     private fun setupView() {
         val navController = findNavController()
-        binding.buttonSignIn.setOnClickListener {
-            val phoneNumber = binding.editTextPhone.text.toString()
+        binding.buttonSignInSignUp.setOnClickListener {
+            val phoneNumber = binding.editTextPhoneNumber.text.toString()
             signInViewModel.onEvent(
-                SignInEvent.SignIn(
+                AuthEvent.Auth(
                     phoneNumber,
                     requireActivity()
                 ) {

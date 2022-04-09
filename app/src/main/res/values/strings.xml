@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Koffie</string>
+    <string name="explore">Explore</string>
+    <string name="profile">Profile</string>
+    <string name="home">Home</string>
+    <string name="order">Order</string>
+    <string name="misc">Misc</string>
+    <string name="enter_phone_number">Enter phone number</string>
+    <string name="signin_signup">Signin / Signup</string>
+    <string name="signin_signup_agreement">By signin or signup to our app, you are giving your consent and agree to our Term of Service and Privacy Policy</string>
+    <string name="verify">Verify</string>
+    <string name="dummy_phone_number">812XXXXXXXX</string>
+    <string name="sign_out">Sign Out</string>
 </resources>

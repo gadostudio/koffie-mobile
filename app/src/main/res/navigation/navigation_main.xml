@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/auth_navigation"
+    app:startDestination="@id/navigation_home">
+
+    <navigation
+        android:id="@+id/navigation_home"
+        android:label="Home"
+        app:startDestination="@id/navigation_home_main">
+        <fragment
+            android:id="@+id/navigation_home_main"
+            android:name="id.shaderboi.koffie.ui.main.home.HomeFragment"
+            tools:layout="@layout/fragment_home" />
+    </navigation>
+    <navigation
+        android:id="@+id/navigation_order"
+        android:label="Order"
+        app:startDestination="@id/navigation_order_main">
+        <fragment
+            android:id="@+id/navigation_order_main"
+            android:name="id.shaderboi.koffie.ui.main.order.OrderFragment"
+            tools:layout="@layout/fragment_order" />
+    </navigation>
+    <navigation
+        android:id="@+id/navigation_misc"
+        android:label="Misc"
+        app:startDestination="@id/navigation_misc_main">
+        <fragment
+            android:id="@+id/navigation_misc_main"
+            android:name="id.shaderboi.koffie.ui.main.misc.MiscFragment"
+            tools:layout="@layout/fragment_misc" />
+    </navigation>
+
+</navigation>

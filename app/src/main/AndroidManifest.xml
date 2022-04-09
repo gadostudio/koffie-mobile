@@ -3,6 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="id.shaderboi.koffie">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:name=".KoffieApplication"
         android:allowBackup="true"
@@ -10,7 +16,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Koffie"
+        android:theme="@style/Theme.Koffie.SplashScreen"
         tools:replace="android:allowBackup">
         <activity
             android:name=".ui.main.MainActivity"

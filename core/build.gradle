@@ -23,7 +23,7 @@ android {
         }
     }
     buildTypes.all {
-        buildConfigField "String", "API_ENDPOINT", ""
+        buildConfigField "String", "API_ENDPOINT", "\"https://google.com\""
     }
 
     compileOptions {
@@ -44,6 +44,12 @@ dependencies {
     /// Coroutine
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineVersion"
+
+    // Firebase
+    implementation platform('com.google.firebase:firebase-bom:29.3.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-auth-ktx:'
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
 
     // Network
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
