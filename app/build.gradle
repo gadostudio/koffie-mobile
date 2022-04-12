@@ -26,6 +26,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
+        buildConfigField "String", "GOOGLE_MAPS_API", "\"AIzaSyDDKYRqId60GnoNYw7jjLPFAgWZr8Qd4To\""
         buildConfigField "String", "MIDTRANS_API", "\"SB-Mid-client-FGDd5FsG_5p0EiWB\""
     }
 
@@ -73,8 +74,9 @@ dependencies {
 
     // Serializer & deserializer
     implementation "com.squareup.moshi:moshi:$moshiVersion"
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.1'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.4.1'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.2'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.4.2'
+    implementation 'com.google.android.gms:play-services-maps:18.0.2'
     kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
 
     // Hilt
@@ -95,6 +97,8 @@ dependencies {
 //    debugImplementation "com.midtrans:uikit:1.31.0-SANDBOX"
     implementation "com.midtrans:uikit:1.31.0"
     implementation 'com.google.android.flexbox:flexbox:3.0.0'
+
+    implementation "pub.devrel:easypermissions:3.0.0"
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
