@@ -1,14 +1,46 @@
 <resources>
+    <string-array name="gender_name">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Prefer not to say</item>
+    </string-array>
+
     <string name="app_name">Koffie</string>
     <string name="explore">Explore</string>
     <string name="profile">Profile</string>
     <string name="home">Home</string>
     <string name="order">Order</string>
     <string name="misc">Misc</string>
-    <string name="enter_phone_number">Enter phone number</string>
+    <string name="phone_number">Phone number</string>
     <string name="signin_signup">Signin / Signup</string>
     <string name="signin_signup_agreement">By signin or signup to our app, you are giving your consent and agree to our Term of Service and Privacy Policy</string>
     <string name="verify">Verify</string>
     <string name="dummy_phone_number">812XXXXXXXX</string>
     <string name="sign_out">Sign Out</string>
+    <string name="submit">Submit</string>
+
+    <string name="error_unknown">Unknown error</string>
+    <string name="error_invalid_phone_number">Invalid phone number</string>
+    <string name="error_requires_recent_login">Recent login is required</string>
+    <string name="error_invalid_multi_factor_session">Invalid multi factor session</string>
+    <string name="error_missing_multi_factor_info">Missing multi factor info</string>
+    <string name="error_missing_multi_factor_session">Mssing multi factor session</string>
+    <string name="error_missing_verification_code">Missing verification code</string>
+    <string name="error_missing_phone_number">Missing phone number</string>
+    <string name="error_invalid_verification_code">Invalid verification code</string>
+    <string name="error_invalid_verification_id">Invalid verification ID, please restart the app and try again</string>
+    <string name="error_session_expired">Session expired</string>
+    <string name="error_multi_factor_info_not_found">Multi factor info not found</string>
+    <string name="error_second_factor_required">Second factor required</string>
+    <string name="error_second_factor_already_enrolled">Second factor already enrolled</string>
+    <string name="error_maximum_second_factor_count_exceeded">Maximum second factor count is already exceeded</string>
+    <string name="error_unsupported_first_factor">Unsupported first factor</string>
+    <string name="error_email_change_needs_verification">Email change needs verification</string>
+    <string name="error_user_disabled">User is disabled</string>
+    <string name="error_user_not_found">User is not found</string>
+    <string name="error_token_expired">Token expired, please try again</string>
+    <string name="error_invalid_user_token">Invalid user token</string>
+    <string name="error_account_exists_with_different_credential">Account is already exists with different credential</string>
+    <string name="error_email_already_in_use">Email is already in use</string>
+    <string name="error_credential_already_in_use">Credential is already in use</string>
 </resources>

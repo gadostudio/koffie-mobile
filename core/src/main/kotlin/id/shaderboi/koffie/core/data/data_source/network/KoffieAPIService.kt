@@ -5,6 +5,6 @@ import kotlinx.coroutines.flow.Flow
 import retrofit2.http.GET
 
 interface KoffieAPIService {
-    @GET("/api/v1/blabla")
+    @GET("/v1/products")
     fun getStoreFront(): Flow<StoreFront>
 }

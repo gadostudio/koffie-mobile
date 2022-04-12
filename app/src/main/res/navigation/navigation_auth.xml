@@ -16,6 +16,9 @@
             <action
                 android:id="@+id/action_navigation_auth_signin_to_navigation_auth_verify"
                 app:destination="@id/navigation_auth_verify" />
+            <action
+                android:id="@+id/action_navigation_auth_signin_to_navigation_auth_registration"
+                app:destination="@id/navigation_auth_registration" />
         </fragment>
         <fragment
             android:id="@+id/navigation_auth_verify"
@@ -24,6 +27,9 @@
             <action
                 android:id="@+id/action_navigation_auth_verify_to_navigation_auth_register"
                 app:destination="@id/navigation_auth_registration" />
+            <argument
+                android:name="verificationId"
+                app:argType="string" />
         </fragment>
 
         <fragment
