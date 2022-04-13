@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <include
-        android:id="@+id/viewPromo"
+        android:id="@+id/includeViewPromo"
         layout="@layout/view_promo" />
 
     <androidx.recyclerview.widget.RecyclerView
