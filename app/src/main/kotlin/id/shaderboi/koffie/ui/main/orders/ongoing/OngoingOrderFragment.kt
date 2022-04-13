@@ -1,17 +1,17 @@
-package id.shaderboi.koffie.ui.main.order
+package id.shaderboi.koffie.ui.main.orders.ongoing
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import dagger.hilt.EntryPoint
+import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
-import id.shaderboi.koffie.databinding.FragmentOrderBinding
+import id.shaderboi.koffie.databinding.FragmentOrdersBinding
 
 @AndroidEntryPoint
-class OrderFragment: Fragment() {
-    private var _binding: FragmentOrderBinding? = null
+class OngoingOrderFragment: Fragment() {
+    private var _binding: FragmentOrdersBinding? = null
     val binding get() = _binding!!
 
     override fun onCreateView(
@@ -19,7 +19,13 @@ class OrderFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentOrderBinding.inflate(inflater, container, false)
+        _binding = FragmentOrdersBinding.inflate(inflater, container, false)
+
+        setupView()
+
         return binding.root
+    }
+
+    private fun setupView() {
     }
 }

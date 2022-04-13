@@ -15,13 +15,13 @@
             tools:layout="@layout/fragment_home" />
     </navigation>
     <navigation
-        android:id="@+id/navigation_order"
+        android:id="@+id/navigation_history"
         android:label="Order"
         app:startDestination="@id/navigation_order_main">
         <fragment
             android:id="@+id/navigation_order_main"
-            android:name="id.shaderboi.koffie.ui.main.order.OrderFragment"
-            tools:layout="@layout/fragment_order" />
+            android:name="id.shaderboi.koffie.ui.main.orders.OrdersFragment"
+            tools:layout="@layout/fragment_orders" />
     </navigation>
     <navigation
         android:id="@+id/navigation_misc"

@@ -6,9 +6,9 @@
         android:icon="@drawable/ic_baseline_explore_24"
         android:title="@string/home" />
     <item
-        android:id="@+id/navigation_order"
+        android:id="@+id/navigation_history"
         android:icon="@drawable/ic_baseline_shopping_basket_24"
-        android:title="@string/order" />
+        android:title="@string/history" />
     <item
         android:id="@+id/navigation_misc"
         android:icon="@drawable/ic_baseline_more_horiz_24"

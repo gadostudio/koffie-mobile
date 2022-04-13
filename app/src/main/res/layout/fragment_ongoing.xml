@@ -6,15 +6,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include
-        android:id="@+id/includeViewPromo"
-        layout="@layout/view_promo" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewProducts"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
-        tools:listitem="@layout/item_products" />
+        tools:text="Hi there!" />
+
 </LinearLayout>
