@@ -4,15 +4,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import id.shaderboi.koffie.core.domain.model.Coupon
-import id.shaderboi.koffie.databinding.ItemCouponBinding
+import id.shaderboi.koffie.core.domain.model.order.Order
 import id.shaderboi.koffie.databinding.ItemOrderBinding
+import java.text.DecimalFormat
+import javax.inject.Inject
 
 class HistoryOrderAdapter(
-    private val coupons: List<Coupon>,
-    private val onClick: (view: View, coupon: Coupon) -> Unit
-) :
-    RecyclerView.Adapter<HistoryOrderAdapter.ViewHolder>() {
+    private val orders: List<Order>,
+    private val onClick: (view: View, coupon: Order) -> Unit,
+    private val numberFormatter: DecimalFormat
+) : RecyclerView.Adapter<HistoryOrderAdapter.ViewHolder>() {
 
     class ViewHolder(val binding: ItemOrderBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -23,15 +24,17 @@ class HistoryOrderAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val coupon = coupons[position]
+        val order = orders[position]
         holder.binding.apply {
-            textViewTotalItem.text = "1"
-            textViewTitle.text = coupon.title
+            textViewTitle.text = order.restaurantName
+            textViewTotalItem.text = order.itemAmount.toString()
+            textViewTotalPrice.text = numberFormatter.format(order.totalPrice)
+            textViewDatetime.text = order.createdAt.toString()
             root.setOnClickListener { view ->
-                onClick(view, coupon)
+                onClick(view, order)
             }
         }
     }
 
-    override fun getItemCount(): Int = coupons.size
+    override fun getItemCount(): Int = orders.size
 }

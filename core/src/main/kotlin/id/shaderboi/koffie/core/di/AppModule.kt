@@ -8,17 +8,17 @@ import id.shaderboi.koffie.core.BuildConfig
 import id.shaderboi.koffie.core.data.auth.Auth
 import id.shaderboi.koffie.core.data.auth.AuthFirebase
 import id.shaderboi.koffie.core.data.data_source.network.KoffieAPIService
-import id.shaderboi.koffie.core.data.repository.VendorRepositoryImpl
-import id.shaderboi.koffie.core.domain.repository.VendorRepository
+import id.shaderboi.koffie.core.data.repository.StoreRepositoryImpl
+import id.shaderboi.koffie.core.domain.repository.StoreRepository
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.text.DecimalFormat
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
-    @Singleton
     @Provides
     fun provideRetrofit(): Retrofit {
         val client = OkHttpClient.Builder()
@@ -30,18 +30,15 @@ object AppModule {
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
     }
-
-    @Singleton
+    
     @Provides
     fun provideKoffieServiceAPI(retrofit: Retrofit): KoffieAPIService =
         retrofit.create(KoffieAPIService::class.java)
-
-    @Singleton
+    
     @Provides
     fun provideAuth(): Auth = AuthFirebase()
-
-    @Singleton
+    
     @Provides
-    fun provideVendorRepository(koffieAPIService: KoffieAPIService): VendorRepository =
-        VendorRepositoryImpl(koffieAPIService)
+    fun provideVendorRepository(koffieAPIService: KoffieAPIService): StoreRepository =
+        StoreRepositoryImpl(koffieAPIService)
 }

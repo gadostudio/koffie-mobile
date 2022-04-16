@@ -43,4 +43,5 @@
     <string name="error_account_exists_with_different_credential">Account is already exists with different credential</string>
     <string name="error_email_already_in_use">Email is already in use</string>
     <string name="error_credential_already_in_use">Credential is already in use</string>
+    <string name="total_item">Total Item:</string>
 </resources>

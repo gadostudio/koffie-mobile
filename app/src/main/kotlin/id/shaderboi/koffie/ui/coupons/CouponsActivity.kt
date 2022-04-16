@@ -8,7 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 import id.shaderboi.koffie.R
-import id.shaderboi.koffie.core.domain.model.Coupon
+import id.shaderboi.koffie.core.domain.model.coupon.Coupon
 import id.shaderboi.koffie.databinding.ActivityCouponsBinding
 import id.shaderboi.koffie.ui.coupons.adapter.CouponAdapter
 import id.shaderboi.koffie.ui.coupons.adapter.CouponShimmerAdapter

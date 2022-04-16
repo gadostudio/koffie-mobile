@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import id.shaderboi.koffie.core.domain.model.Coupon
+import id.shaderboi.koffie.core.domain.model.coupon.Coupon
 import id.shaderboi.koffie.databinding.ItemCouponBinding
 
 class OngoingOrderAdapter(

@@ -27,7 +27,7 @@ class HistoryOrderShimmerAdapter :
                 ContextCompat.getDrawable(context, R.color.placeholder)
             textViewDatetime.background =
                 ContextCompat.getDrawable(context, R.color.placeholder)
-            textVIewPrice.background =
+            textViewTotalPrice.background =
                 ContextCompat.getDrawable(context, R.color.placeholder)
         }
     }

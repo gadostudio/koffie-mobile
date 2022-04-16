@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="top"
-        app:constraint_referenced_ids="textVIewPrice,textViewTotalItem"
+        app:constraint_referenced_ids="textViewTotalPrice,textViewTotalItem"
         tools:layout_editor_absoluteX="15dp"
         tools:layout_editor_absoluteY="125dp" />
 
@@ -42,7 +42,7 @@
         android:id="@+id/textViewTotalItemCaption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Total Item:"
+        android:text="@string/total_item"
         app:layout_constraintBottom_toTopOf="@+id/horizontalBarrierDatetime"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontalBarrierItemAndPrice" />
@@ -59,7 +59,7 @@
         tools:text="1" />
 
     <TextView
-        android:id="@+id/textVIewPrice"
+        android:id="@+id/textViewTotalPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:minEms="4"
