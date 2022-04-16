@@ -4,6 +4,16 @@
         <item>Female</item>
         <item>Prefer not to say</item>
     </string-array>
+    <string-array name="theme">
+        <item>Follow system</item>
+        <item>Dark</item>
+        <item>Light</item>
+    </string-array>
+    <string-array name="themeValues">
+        <item>FollowSystem</item>
+        <item>Dark</item>
+        <item>Light</item>
+    </string-array>
 
     <string name="app_name">Koffie</string>
     <string name="explore">Explore</string>
