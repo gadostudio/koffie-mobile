@@ -1,4 +1,4 @@
-package id.shaderboi.koffie.ui.main.home.adapter
+package id.shaderboi.koffie.ui.main.store.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
