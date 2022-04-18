@@ -5,9 +5,9 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="onBackground">#FF000000</color>
-    <color name="onPrimary">#FFFFFFFF</color>
-    <color name="background">#FFFFFFFF</color>
+    <color name="onBackground">#FFFFFFFF</color>
+    <color name="onPrimary">#FF000000</color>
+    <color name="background">#FF000000</color>
     <color name="danger">#B8281E</color>
     <color name="placeholder">#5E5E5E</color>
 </resources>
