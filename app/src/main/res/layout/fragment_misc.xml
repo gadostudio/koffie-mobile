@@ -9,7 +9,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary">
+        android:background="@color/primary">
 
         <com.google.android.flexbox.FlexboxLayout
             android:id="@+id/flexboxLayout"
@@ -55,6 +55,7 @@
                 android:id="@+id/buttonSignOut"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/onPrimary"
                 android:text="@string/sign_out" />
         </com.google.android.flexbox.FlexboxLayout>
     </FrameLayout>

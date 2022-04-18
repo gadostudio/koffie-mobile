@@ -1,6 +1,6 @@
 package id.shaderboi.koffie.ui.main.stores
 
-import MAPVIEW_BUNDLE_KEY
+import Bundle as BundleConst
 import Permission
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -50,7 +50,7 @@ class StoresFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         if (savedInstanceState != null) {
-            mapViewBundle = savedInstanceState.getBundle(MAPVIEW_BUNDLE_KEY)
+            mapViewBundle = savedInstanceState.getBundle(BundleConst.MAPVIEW_KEY)
         }
     }
 
@@ -83,10 +83,10 @@ class StoresFragment : Fragment() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
 
-        var mapViewBundle = outState.getBundle(MAPVIEW_BUNDLE_KEY)
+        var mapViewBundle = outState.getBundle(BundleConst.MAPVIEW_KEY)
         if (mapViewBundle == null) {
             mapViewBundle = Bundle()
-            outState.putBundle(MAPVIEW_BUNDLE_KEY, mapViewBundle)
+            outState.putBundle(BundleConst.MAPVIEW_KEY, mapViewBundle)
         }
 
         binding.mapView.onSaveInstanceState(mapViewBundle)

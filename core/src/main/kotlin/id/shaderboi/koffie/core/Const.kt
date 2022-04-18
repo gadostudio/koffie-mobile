@@ -22,3 +22,7 @@ object Permission {
             )
         }
 }
+
+object Bundle {
+    val MAPVIEW_KEY = "MAPVIEW_BUNDLE_KEY"
+}

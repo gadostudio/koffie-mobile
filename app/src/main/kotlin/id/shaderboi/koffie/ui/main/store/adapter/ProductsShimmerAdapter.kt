@@ -1,13 +1,11 @@
-package id.shaderboi.koffie.ui.main.home.adapter
+package id.shaderboi.koffie.ui.main.store.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import id.shaderboi.koffie.R
-import id.shaderboi.koffie.core.domain.model.store.products.Product
 import id.shaderboi.koffie.databinding.ItemProductBinding
-import java.text.DecimalFormat
 
 class ProductsShimmerAdapter :
     RecyclerView.Adapter<ProductsShimmerAdapter.ViewHolder>() {

@@ -7,10 +7,12 @@
         <entry key="..\:/Users/andra/Projects/Koffie/app/src/main/res/drawable/divider8dp.xml" value="0.121" />
         <entry key="..\:/Users/andra/Projects/Koffie/app/src/main/res/drawable/divider8p.xml" value="0.13" />
         <entry key="..\:/Users/andra/Projects/Koffie/app/src/main/res/drawable/ic_baseline_explore_24.xml" value="0.13" />
+        <entry key="..\:/Users/andra/Projects/Koffie/app/src/main/res/drawable/primary_gradient_from_bottom.xml" value="0.1345" />
         <entry key="..\:/Users/andra/Projects/Koffie/app/src/main/res/drawable/primary_gradient_from_top.xml" value="0.13" />
         <entry key="..\:/Users/andra/Projects/Koffie/app/src/main/res/drawable/round_bordered16p.xml" value="0.13" />
         <entry key="..\:/Users/andra/Projects/Koffie/app/src/main/res/drawable/round_bordered32dp.xml" value="0.13" />
         <entry key="..\:/Users/andra/Projects/Koffie/app/src/main/res/drawable/round_bordered8dp.xml" value="0.13" />
+        <entry key="..\:/Users/andra/Projects/Koffie/app/src/main/res/drawable/round_top_border.xml" value="0.1345" />
         <entry key="..\:/Users/andra/Projects/Koffie/app/src/main/res/layout/activity_auth.xml" value="0.2" />
         <entry key="..\:/Users/andra/Projects/Koffie/app/src/main/res/layout/activity_cart.xml" value="0.264" />
         <entry key="..\:/Users/andra/Projects/Koffie/app/src/main/res/layout/activity_location.xml" value="0.2" />
@@ -30,6 +32,7 @@
         <entry key="..\:/Users/andra/Projects/Koffie/app/src/main/res/layout/fragment_profile.xml" value="0.176" />
         <entry key="..\:/Users/andra/Projects/Koffie/app/src/main/res/layout/fragment_registration.xml" value="0.264" />
         <entry key="..\:/Users/andra/Projects/Koffie/app/src/main/res/layout/fragment_signin.xml" value="0.264" />
+        <entry key="..\:/Users/andra/Projects/Koffie/app/src/main/res/layout/fragment_stores.xml" value="0.264" />
         <entry key="..\:/Users/andra/Projects/Koffie/app/src/main/res/layout/fragment_verify.xml" value="0.264" />
         <entry key="..\:/Users/andra/Projects/Koffie/app/src/main/res/layout/item_categorized_product.xml" value="0.4" />
         <entry key="..\:/Users/andra/Projects/Koffie/app/src/main/res/layout/item_coupon.xml" value="0.264" />
@@ -40,6 +43,7 @@
         <entry key="..\:/Users/andra/Projects/Koffie/app/src/main/res/layout/item_price.xml" value="0.1671195652173913" />
         <entry key="..\:/Users/andra/Projects/Koffie/app/src/main/res/layout/item_product.xml" value="0.4" />
         <entry key="..\:/Users/andra/Projects/Koffie/app/src/main/res/layout/item_products.xml" value="0.264" />
+        <entry key="..\:/Users/andra/Projects/Koffie/app/src/main/res/layout/item_store.xml" value="0.264" />
         <entry key="..\:/Users/andra/Projects/Koffie/app/src/main/res/layout/view_discount.xml" value="0.1671195652173913" />
         <entry key="..\:/Users/andra/Projects/Koffie/app/src/main/res/layout/view_promo.xml" value="0.20253164556962025" />
         <entry key="..\:/Users/andra/Projects/Koffie/app/src/main/res/menu/bottom_app_bar_main.xml" value="0.24615384615384617" />

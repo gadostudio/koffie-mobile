@@ -15,7 +15,6 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
 
-        buildConfigField "String", "GOOGLE_MAPS_API", "\"AIzaSyDDKYRqId60GnoNYw7jjLPFAgWZr8Qd4To\""
         buildConfigField "String", "API_ENDPOINT", "\"https://shaderboi-koffie.herokuapp.com/api/\""
     }
 
@@ -59,6 +58,9 @@ dependencies {
     // Hilt
     implementation "com.google.dagger:hilt-android:$hiltVersion"
     kapt "com.google.dagger:hilt-compiler:$hiltVersion"
+
+    // Maps
+    implementation "com.google.android.gms:play-services-maps:18.0.2"
 
     implementation "pub.devrel:easypermissions:3.0.0"
 
