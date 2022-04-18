@@ -1,4 +1,4 @@
-package id.shaderboi.koffie.ui.main.home
+package id.shaderboi.koffie.ui.main.store
 
 import Permission
 import android.app.Activity
@@ -18,27 +18,25 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 import id.shaderboi.koffie.R
 import id.shaderboi.koffie.core.util.Resource
-import id.shaderboi.koffie.databinding.FragmentHomeBinding
+import id.shaderboi.koffie.databinding.FragmentStoreBinding
 import id.shaderboi.koffie.ui.coupons.CouponsActivity
-import id.shaderboi.koffie.ui.main.home.adapter.CategorizedProductAdapter
-import id.shaderboi.koffie.ui.main.home.adapter.CategorizedProductShimmerAdapter
-import id.shaderboi.koffie.ui.main.home.view_model.HomeEvent
-import id.shaderboi.koffie.ui.main.home.view_model.HomeViewModel
-import id.shaderboi.koffie.ui.main.orders.history.adapter.HistoryOrderShimmerAdapter
+import id.shaderboi.koffie.ui.location.LocationActivity
+import id.shaderboi.koffie.ui.main.store.adapter.CategorizedProductAdapter
+import id.shaderboi.koffie.ui.main.store.adapter.CategorizedProductShimmerAdapter
+import id.shaderboi.koffie.ui.main.store.view_model.StoreEvent
+import id.shaderboi.koffie.ui.main.store.view_model.StoreViewModel
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import pub.devrel.easypermissions.EasyPermissions
 import java.text.DecimalFormat
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
-    private var _binding: FragmentHomeBinding? = null
+class StoreFragment : Fragment() {
+    private var _binding: FragmentStoreBinding? = null
     val binding get() = _binding!!
 
-    private val homeViewModel by viewModels<HomeViewModel>()
+    private val homeViewModel by viewModels<StoreViewModel>()
 
     @Inject
     lateinit var numberFormatter: DecimalFormat
@@ -54,7 +52,7 @@ class HomeFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        homeViewModel.onEvent(HomeEvent.Load(1))
+        homeViewModel.onEvent(StoreEvent.Load(1))
     }
 
     override fun onCreateView(
@@ -62,7 +60,7 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentStoreBinding.inflate(inflater, container, false)
 
         askPermission()
         collectUIEvent()
@@ -118,6 +116,10 @@ class HomeFragment : Fragment() {
         binding.includeViewPromo.root.setOnClickListener {
             val intent = Intent(requireContext(), CouponsActivity::class.java)
             takePromoCoupon.launch(intent)
+        }
+
+        binding.linearLayoutDistance.setOnClickListener {
+            startActivity(Intent(requireContext(), LocationActivity::class.java))
         }
     }
 

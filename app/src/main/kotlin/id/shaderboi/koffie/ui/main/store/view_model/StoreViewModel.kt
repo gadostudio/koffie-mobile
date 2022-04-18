@@ -1,4 +1,4 @@
-package id.shaderboi.koffie.ui.main.home.view_model
+package id.shaderboi.koffie.ui.main.store.view_model
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(
+class StoreViewModel @Inject constructor(
     private val storeRepository: StoreRepository
 ) : ViewModel() {
     private val _store = MutableSharedFlow<Resource<Store>>(1)
@@ -22,9 +22,9 @@ class HomeViewModel @Inject constructor(
     private val _products = MutableSharedFlow<Resource<List<CategorizedProduct>>>(1)
     val products = _products.asSharedFlow()
 
-    fun onEvent(event: HomeEvent) {
+    fun onEvent(event: StoreEvent) {
         when (event) {
-            is HomeEvent.Load -> loadStoreAndProduct(event.storeId)
+            is StoreEvent.Load -> loadStoreAndProduct(event.storeId)
         }
     }
 
