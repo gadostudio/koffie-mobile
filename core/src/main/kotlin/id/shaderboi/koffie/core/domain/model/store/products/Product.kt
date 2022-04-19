@@ -1,9 +1,12 @@
 package id.shaderboi.koffie.core.domain.model.store.products
 
+import android.os.Parcelable
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import kotlinx.parcelize.Parcelize
 
 @JsonClass(generateAdapter = true)
+@Parcelize
 data class Product(
     val id: Int,
     val name: String,
@@ -14,4 +17,4 @@ data class Product(
     @Json(name = "image_url")
     val imageUrl: String,
     val discount: Int?
-)
+): Parcelable

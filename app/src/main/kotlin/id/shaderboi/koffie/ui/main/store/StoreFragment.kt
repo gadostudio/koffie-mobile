@@ -14,6 +14,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -101,7 +102,12 @@ class StoreFragment : Fragment() {
                             is Resource.Loaded -> {
                                 binding.shimmerFrameLayoutProducts.hideShimmer()
                                 binding.recyclerViewProducts.adapter =
-                                    CategorizedProductAdapter(res.data, numberFormatter)
+                                    CategorizedProductAdapter(res.data, numberFormatter) { product ->
+                                        val navController = findNavController()
+                                        val action =
+                                            StoreFragmentDirections.actionNavigationHomeStoreToNavigationHomeProduct(product)
+                                        navController.navigate(action)
+                                    }
                             }
                             is Resource.Loading -> {
                                 binding.recyclerViewProducts.adapter =

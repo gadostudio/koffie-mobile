@@ -1,7 +1,5 @@
 package id.shaderboi.koffie.ui.main.store.adapter
 
-import IntentExtra
-import android.content.Intent
 import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,12 +7,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import id.shaderboi.koffie.core.domain.model.store.products.Product
 import id.shaderboi.koffie.databinding.ItemProductBinding
-import id.shaderboi.koffie.ui.product.ProductActivity
 import java.text.DecimalFormat
 
 class ProductsAdapter(
     private val products: List<Product>,
-    private val numberFormatter: DecimalFormat
+    private val numberFormatter: DecimalFormat,
+    private val onProductClick: (product: Product) -> Unit
 ) :
     RecyclerView.Adapter<ProductsAdapter.ViewHolder>() {
     class ViewHolder(val binding: ItemProductBinding) :
@@ -50,11 +48,7 @@ class ProductsAdapter(
                 .into(imageViewProduct)
 
             root.setOnClickListener {
-                val context = root.context
-                val intent = Intent(context, ProductActivity::class.java).apply {
-                    putExtra(IntentExtra.PRODUCT_ID, product.id)
-                }
-                context.startActivity(intent)
+                onProductClick(product)
             }
         }
     }

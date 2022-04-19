@@ -30,7 +30,7 @@ class VerifyFragment : Fragment() {
     val binding get() = _binding!!
 
     private val verifyViewModel by viewModels<VerifyViewModel>()
-    val args: VerifyFragmentArgs by navArgs()
+    val args by navArgs<VerifyFragmentArgs>()
 
     override fun onCreateView(
         inflater: LayoutInflater,

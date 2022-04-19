@@ -55,4 +55,5 @@
     <string name="error_credential_already_in_use">Credential is already in use</string>
     <string name="total_item">Total Item:</string>
     <string name="distance">Distance</string>
+    <string name="add_to_cart">Add to cart</string>
 </resources>

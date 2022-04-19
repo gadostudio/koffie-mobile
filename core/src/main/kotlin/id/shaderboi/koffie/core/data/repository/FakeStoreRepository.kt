@@ -59,7 +59,7 @@ class FakeStoreRepository : StoreRepository {
                         "Some description",
                         12000,
                         0,
-                        "http://i.epvpimg.com/avEeeab.png",
+                        "https://i.epvpimg.com/avEeeab.png",
                         2000
                     ),
                     Product(
@@ -68,7 +68,7 @@ class FakeStoreRepository : StoreRepository {
                         "Some description",
                         22000,
                         0,
-                        "http://i.epvpimg.com/avEeeab.png",
+                        "https://i.epvpimg.com/avEeeab.png",
                         7000
                     )
                 )
@@ -82,7 +82,7 @@ class FakeStoreRepository : StoreRepository {
                         "Some description",
                         12000,
                         1,
-                        "http://i.epvpimg.com/avEeeab.png",
+                        "https://i.epvpimg.com/avEeeab.png",
                         null
                     )
                 )

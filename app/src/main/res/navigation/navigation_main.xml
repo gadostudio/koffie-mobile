@@ -15,10 +15,10 @@
             tools:layout="@layout/fragment_stores" >
             <action
                 android:id="@+id/action_navigation_home_stores_to_navigation_home_main"
-                app:destination="@id/navigation_home_main" />
+                app:destination="@id/navigation_home_store" />
         </fragment>
         <fragment
-            android:id="@+id/navigation_home_main"
+            android:id="@+id/navigation_home_store"
             android:name="id.shaderboi.koffie.ui.main.store.StoreFragment"
             tools:layout="@layout/fragment_store" >
             <argument
@@ -28,7 +28,18 @@
                 android:name="storeWithDistance"
                 app:argType="id.shaderboi.koffie.core.domain.model.store.StoreWithDistance"
                 app:nullable="true" />
+            <action
+                android:id="@+id/action_navigation_home_store_to_navigation_home_product"
+                app:destination="@id/navigation_home_product" />
         </fragment>
+        <dialog
+            android:id="@+id/navigation_home_product"
+            android:name="id.shaderboi.koffie.ui.product.ProductFragment"
+            tools:layout="@layout/fragment_product" >
+            <argument
+                android:name="product"
+                app:argType="id.shaderboi.koffie.core.domain.model.store.products.Product" />
+        </dialog>
     </navigation>
     <navigation
         android:id="@+id/navigation_history"
