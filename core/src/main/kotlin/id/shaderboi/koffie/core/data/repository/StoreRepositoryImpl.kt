@@ -1,8 +1,10 @@
 package id.shaderboi.koffie.core.data.repository
 
+import android.location.Location
 import id.shaderboi.koffie.core.data.data_source.network.KoffieAPIService
 import id.shaderboi.koffie.core.domain.model.common.Coordinate
 import id.shaderboi.koffie.core.domain.model.store.Store
+import id.shaderboi.koffie.core.domain.model.store.StoreWithDistance
 import id.shaderboi.koffie.core.domain.model.store.products.CategorizedProduct
 import id.shaderboi.koffie.core.domain.model.store.products.Product
 import id.shaderboi.koffie.core.domain.repository.StoreRepository
@@ -10,11 +12,12 @@ import id.shaderboi.koffie.core.domain.repository.StoreRepository
 class StoreRepositoryImpl(
     private val koffieAPIService: KoffieAPIService
 ) : StoreRepository {
-    override suspend fun getNearestStore(coordinate: Coordinate): Int? =
-        koffieAPIService.getNearestStore(coordinate)
-
-    override suspend fun getStores(coordinate: Coordinate): List<Store> =
-        koffieAPIService.getStores(coordinate)
+    override suspend fun getStores(coordinate: Coordinate): List<StoreWithDistance> =
+        koffieAPIService.getStores()
+            .map { store ->
+                StoreWithDistance(store, store.coordinate.distanceTo(coordinate))
+            }
+            .sortedBy { storeWithDistance -> storeWithDistance.distance }
 
     override suspend fun getStore(storeId: Int): Store =
         koffieAPIService.getStore(storeId)

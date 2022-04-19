@@ -8,13 +8,11 @@ import id.shaderboi.koffie.core.BuildConfig
 import id.shaderboi.koffie.core.data.auth.Auth
 import id.shaderboi.koffie.core.data.auth.AuthFirebase
 import id.shaderboi.koffie.core.data.data_source.network.KoffieAPIService
-import id.shaderboi.koffie.core.data.repository.StoreRepositoryImpl
+import id.shaderboi.koffie.core.data.repository.FakeStoreRepository
 import id.shaderboi.koffie.core.domain.repository.StoreRepository
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import java.text.DecimalFormat
-import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -40,5 +38,6 @@ object AppModule {
     
     @Provides
     fun provideVendorRepository(koffieAPIService: KoffieAPIService): StoreRepository =
-        StoreRepositoryImpl(koffieAPIService)
+        FakeStoreRepository()
+//        StoreRepositoryImpl(koffieAPIService)
 }

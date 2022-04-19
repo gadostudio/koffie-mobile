@@ -1,35 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/round_bordered8dp"
+    android:divider="@drawable/divider16dp"
+    android:gravity="center_vertical"
     android:paddingStart="20dp"
-    android:paddingEnd="20dp">
+    android:paddingTop="10dp"
+    android:paddingEnd="20dp"
+    android:paddingBottom="10dp"
+    android:showDividers="middle">
 
-    <LinearLayout
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:srcCompat="@drawable/ic_baseline_airplane_ticket_24" />
+
+    <TextView
+        android:id="@+id/textViewPromoCaption"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/round_bordered8dp"
-        android:divider="@drawable/divider16dp"
-        android:gravity="center_vertical"
-        android:paddingStart="20dp"
-        android:paddingTop="10dp"
-        android:paddingEnd="20dp"
-        android:paddingBottom="10dp"
-        android:showDividers="middle">
-
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            app:srcCompat="@drawable/ic_baseline_airplane_ticket_24" />
-
-        <TextView
-            android:id="@+id/textViewPromoCaption"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="2 promos are available"
-            android:textStyle="bold" />
-    </LinearLayout>
-</FrameLayout>
+        android:layout_weight="1"
+        android:text="2 promos are available"
+        android:textStyle="bold" />
+</LinearLayout>

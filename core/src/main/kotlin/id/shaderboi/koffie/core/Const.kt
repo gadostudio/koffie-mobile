@@ -3,6 +3,7 @@ import android.os.Build
 
 object IntentExtra {
     const val WITH_SPLASH_SCREEN = "WITH_SPLASH_SCREEN"
+    const val PRODUCT_ID = "PRODUCT_ID"
 }
 
 object Permission {

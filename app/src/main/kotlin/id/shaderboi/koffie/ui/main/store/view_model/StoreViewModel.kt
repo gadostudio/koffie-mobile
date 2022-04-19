@@ -31,19 +31,19 @@ class StoreViewModel @Inject constructor(
     private fun loadStoreAndProduct(storeId: Int) = viewModelScope.launch {
         _products.emit(Resource.Loading())
         _store.emit(Resource.Loading())
-//        launch {
-//            try {
-//                _store.emit(Resource.Loaded(storeRepository.getStore(storeId)))
-//            } catch (ex: Exception) {
-//                _store.emit(Resource.Error(ex))
-//            }
-//        }
-//        launch {
-//            try {
-//                _products.emit(Resource.Loaded(storeRepository.getProducts(storeId)))
-//            } catch (ex: Exception) {
-//                _products.emit(Resource.Error(ex))
-//            }
-//        }
+        launch {
+            try {
+                _store.emit(Resource.Loaded(storeRepository.getStore(storeId)))
+            } catch (ex: Exception) {
+                _store.emit(Resource.Error(ex))
+            }
+        }
+        launch {
+            try {
+                _products.emit(Resource.Loaded(storeRepository.getProducts(storeId)))
+            } catch (ex: Exception) {
+                _products.emit(Resource.Error(ex))
+            }
+        }
     }
 }

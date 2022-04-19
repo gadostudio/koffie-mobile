@@ -41,10 +41,10 @@
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <com.facebook.shimmer.ShimmerFrameLayout
-            app:shimmer_auto_start="true"
             android:id="@+id/shimmerFrameLayoutMain"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:shimmer_auto_start="true">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewStores"

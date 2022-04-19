@@ -54,7 +54,6 @@ dependencies {
     implementation project(":core")
 
     // Lifecycle
-    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
 
@@ -95,6 +94,8 @@ dependencies {
 
     // Maps
     implementation "com.google.android.gms:play-services-maps:18.0.2"
+    // Image
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
     implementation "com.google.firebase:firebase-appcheck-safetynet:16.0.0-beta06"
     implementation "androidx.core:core-splashscreen:1.0.0-beta02"

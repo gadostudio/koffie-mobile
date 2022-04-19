@@ -14,9 +14,15 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationRequest
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.tasks.CancellationTokenSource
 import dagger.hilt.android.AndroidEntryPoint
 import id.shaderboi.koffie.R
+import id.shaderboi.koffie.core.domain.model.common.Coordinate
 import id.shaderboi.koffie.core.util.Resource
 import id.shaderboi.koffie.databinding.FragmentStoreBinding
 import id.shaderboi.koffie.ui.coupons.CouponsActivity
@@ -37,9 +43,15 @@ class StoreFragment : Fragment() {
     val binding get() = _binding!!
 
     private val homeViewModel by viewModels<StoreViewModel>()
+    private val args by navArgs<StoreFragmentArgs>()
 
     @Inject
     lateinit var numberFormatter: DecimalFormat
+
+    private val fusedLocationClient: FusedLocationProviderClient by lazy {
+        LocationServices.getFusedLocationProviderClient(requireContext())
+    }
+    private var cancellationTokenSource = CancellationTokenSource()
 
     private val takePromoCoupon = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -52,7 +64,7 @@ class StoreFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        homeViewModel.onEvent(StoreEvent.Load(1))
+        homeViewModel.onEvent(StoreEvent.Load(args.storeId))
     }
 
     override fun onCreateView(
@@ -61,6 +73,15 @@ class StoreFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentStoreBinding.inflate(inflater, container, false)
+
+        args.storeWithDistance?.let { storeWithDistance ->
+            binding.apply {
+                shimmerFrameLayoutStore.hideShimmer()
+
+                textViewTitle.text = storeWithDistance.store.name
+                textViewDistance.text = "${numberFormatter.format(storeWithDistance.distance)} km"
+            }
+        }
 
         askPermission()
         collectUIEvent()
@@ -78,7 +99,7 @@ class StoreFragment : Fragment() {
                             is Resource.Error -> {
                             }
                             is Resource.Loaded -> {
-                                binding.shimmerFrameLayoutMain.stopShimmer()
+                                binding.shimmerFrameLayoutProducts.hideShimmer()
                                 binding.recyclerViewProducts.adapter =
                                     CategorizedProductAdapter(res.data, numberFormatter)
                             }
@@ -94,8 +115,44 @@ class StoreFragment : Fragment() {
                     homeViewModel.store.collectLatest { res ->
                         when (res) {
                             is Resource.Error -> {}
-                            is Resource.Loaded -> {}
-                            is Resource.Loading -> {}
+                            is Resource.Loaded -> {
+                                binding.apply {
+                                    shimmerFrameLayoutStore.hideShimmer()
+
+                                    textViewTitle.text = res.data.name
+                                    fusedLocationClient.getCurrentLocation(
+                                        LocationRequest.PRIORITY_HIGH_ACCURACY,
+                                        cancellationTokenSource.token
+                                    ).addOnCompleteListener { task ->
+                                        if (task.isSuccessful) {
+                                            val location = task.result
+                                            val locationCoordinate =
+                                                Coordinate(location.latitude, location.longitude)
+                                            val distance =
+                                                res.data.coordinate.distanceTo(locationCoordinate)
+                                            textViewDistance.text =
+                                                "${numberFormatter.format(distance)} km"
+                                        }
+                                    }
+
+                                    includeViewPromo.textViewPromoCaption.background = null
+                                    textViewDistance.background = null
+                                    textViewTitle.background = null
+                                }
+                            }
+                            is Resource.Loading -> {
+                                val context = requireContext()
+                                if (args.storeWithDistance == null) {
+                                    binding.apply {
+                                        includeViewPromo.textViewPromoCaption.background =
+                                            ContextCompat.getDrawable(context, R.color.placeholder)
+                                        textViewDistance.background =
+                                            ContextCompat.getDrawable(context, R.color.placeholder)
+                                        textViewTitle.background =
+                                            ContextCompat.getDrawable(context, R.color.placeholder)
+                                    }
+                                }
+                            }
                         }
                     }
                 }

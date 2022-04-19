@@ -19,7 +19,6 @@ some tuning.
 - Splashscreen
 - Dagger Hilt
 - Flow coroutine
-- Compose Navigation
 - Retrofit
 - Project structure
 - Networking using Retrofit

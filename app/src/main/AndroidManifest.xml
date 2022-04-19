@@ -52,6 +52,9 @@
         <activity
             android:name=".ui.coupons.CouponsActivity"
             android:exported="false" />
+        <activity
+            android:name=".ui.product.ProductActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

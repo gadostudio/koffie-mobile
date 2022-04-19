@@ -1,6 +1,5 @@
 package id.shaderboi.koffie.ui.main.stores
 
-import Bundle as BundleConst
 import Permission
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,12 +11,14 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationRequest.PRIORITY_HIGH_ACCURACY
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.tasks.CancellationTokenSource
 import com.google.android.material.appbar.AppBarLayout
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,6 +33,8 @@ import kotlinx.coroutines.launch
 import pub.devrel.easypermissions.EasyPermissions
 import java.text.DecimalFormat
 import javax.inject.Inject
+import Bundle as BundleConst
+
 
 @AndroidEntryPoint
 class StoresFragment : Fragment() {
@@ -162,11 +165,25 @@ class StoresFragment : Fragment() {
                             is Resource.Error -> {
                             }
                             is Resource.Loaded -> {
-                                binding.shimmerFrameLayoutMain.stopShimmer()
+                                binding.shimmerFrameLayoutMain.hideShimmer()
+
                                 binding.recyclerViewStores.adapter =
                                     StoresAdapter(res.data, numberFormatter) { store ->
-
+                                        val navController = findNavController()
+                                        val action =
+                                            StoresFragmentDirections.actionNavigationHomeStoresToNavigationHomeMain(
+                                                store.store.id,
+                                                store
+                                            )
+                                        navController.navigate(action)
                                     }
+                                res.data.forEach { storeWithDistance ->
+                                    map.addMarker(
+                                        MarkerOptions()
+                                            .position(storeWithDistance.store.coordinate.toLatLng())
+                                            .title(storeWithDistance.store.name)
+                                    )
+                                }
                             }
                             is Resource.Loading -> {
                                 binding.recyclerViewStores.adapter = StoresShimmerAdapter()
