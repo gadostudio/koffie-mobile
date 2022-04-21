@@ -5,8 +5,8 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import kotlinx.parcelize.Parcelize
 
-@JsonClass(generateAdapter = true)
 @Parcelize
+@JsonClass(generateAdapter = true)
 data class Product(
     val id: Int,
     val name: String,

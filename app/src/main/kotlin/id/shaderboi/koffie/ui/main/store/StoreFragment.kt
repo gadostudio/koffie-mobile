@@ -30,6 +30,7 @@ import id.shaderboi.koffie.R
 import id.shaderboi.koffie.core.domain.model.common.Coordinate
 import id.shaderboi.koffie.core.util.Resource
 import id.shaderboi.koffie.databinding.FragmentStoreBinding
+import id.shaderboi.koffie.ui.checkout.CheckoutActivity
 import id.shaderboi.koffie.ui.coupons.CouponsActivity
 import id.shaderboi.koffie.ui.location.LocationActivity
 import id.shaderboi.koffie.ui.main.store.adapter.CategorizedProductAdapter
@@ -176,10 +177,25 @@ class StoreFragment : Fragment() {
 
                 launch {
                     cartViewModel.cartFlow.collectLatest { cartItems ->
-                        showCheckoutBar(cartItems.isNotEmpty())
+                        val isShowCheckoutBar = cartItems.isNotEmpty()
+                        showCheckoutBar(isShowCheckoutBar)
+
+                        val estimatedTotalPrice =
+                            cartItems.sumOf { cartItem ->
+                                cartItem.product.price - (cartItem.product.discount ?: 0)
+                            }
+
                         binding.apply {
                             textViewCheckoutItems.text = "${cartItems.size} items"
-                            textViewCheckoutPrice.text = "Rp ${numberFormatter.format(12000)}"
+                            textViewCheckoutPrice.text =
+                                "Rp ${numberFormatter.format(estimatedTotalPrice)}"
+
+                            linearLayoutCheckout.setOnClickListener {
+                                if (!isShowCheckoutBar) return@setOnClickListener
+
+                                val intent = Intent(requireContext(), CheckoutActivity::class.java)
+                                startActivity(intent)
+                            }
                         }
                     }
                 }
