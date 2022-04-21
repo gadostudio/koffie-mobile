@@ -7,30 +7,29 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:725480389193:android:e80fbcb1661541e8eb1d98",
+        "mobilesdk_app_id": "1:725480389193:android:ffd9b326bff04b61eb1d98",
         "android_client_info": {
           "package_name": "id.shaderboi.koffie"
         }
       },
       "oauth_client": [
         {
-          "client_id": "725480389193-mfihmtgvhb6qoebab9r84v97n3v7jd9c.apps.googleusercontent.com",
-          "client_type": 3
+          "client_id": "725480389193-t71fd4jnardjuhvkbojck9qhsr7ha1i2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "id.shaderboi.koffie",
+            "certificate_hash": "0c1aaaf0613b5146f68fcd1c02209c3f6f27121f"
+          }
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCdjwYHL7TIpqmz_ONbGICRdPVHHY14kFY"
+          "current_key": "AIzaSyCbCI0afslh5sjouwS4ah3xo3JUDXS2bUI"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "725480389193-mfihmtgvhb6qoebab9r84v97n3v7jd9c.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

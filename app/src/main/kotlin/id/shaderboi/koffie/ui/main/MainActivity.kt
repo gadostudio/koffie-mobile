@@ -35,14 +35,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setupAuthentication()
         setupSplashScreen()
 
-        _binding = ActivityMainBinding.inflate(layoutInflater)
-
-        setupView()
-
-        setContentView(binding.root)
+        setupAuthentication()
     }
 
     override fun onDestroy() {
@@ -79,6 +74,12 @@ class MainActivity : AppCompatActivity() {
             user?.isRegistered
             if (user?.isRegistered == false || user == null) {
                 onNotAuthenticated()
+            } else {
+                _binding = ActivityMainBinding.inflate(layoutInflater)
+
+                setContentView(binding.root)
+
+                setupView()
             }
         }.launchIn(lifecycleScope)
     }

@@ -1,5 +1,6 @@
 package id.shaderboi.koffie.ui.auth.registration
 
+import IntentExtra
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -81,16 +82,16 @@ class RegistrationFragment : Fragment() {
             .datePicker()
             .build()
 
-        binding.editTextBirthDate.setOnClickListener {
-            datePicker.show(parentFragmentManager, null)
-        }
+        binding.apply {
+            editTextBirthDate.setOnClickListener {
+                datePicker.show(parentFragmentManager, null)
+            }
 
-        binding.buttonSubmit.setOnClickListener {
-            val displayName = binding.editTextName.text.toString()
-            val birthDate = binding.editTextBirthDate.text.toString()
-            val selectedGender = binding.spinnerGender.selectedItemPosition
-
-            registrationViewModel.onEvent(RegistrationEvent.Register(displayName))
+            buttonSubmit.setOnClickListener {
+                val displayName = editTextName.text.toString()
+                val birthDate = editTextBirthDate.text.toString()
+                val selectedGender = spinnerGender.selectedItemPosition
+            }
         }
     }
 }

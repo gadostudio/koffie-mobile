@@ -53,7 +53,7 @@
             android:name=".ui.coupons.CouponsActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.product.ProductFragment"
+            android:name=".ui.checkout.CheckoutActivity"
             android:exported="false" />
     </application>
 
