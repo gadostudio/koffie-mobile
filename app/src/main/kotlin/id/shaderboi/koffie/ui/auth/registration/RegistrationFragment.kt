@@ -91,6 +91,12 @@ class RegistrationFragment : Fragment() {
                 val displayName = editTextName.text.toString()
                 val birthDate = editTextBirthDate.text.toString()
                 val selectedGender = spinnerGender.selectedItemPosition
+
+                registrationViewModel.onEvent(
+                    RegistrationEvent.Register(
+                        displayName
+                    )
+                )
             }
         }
     }

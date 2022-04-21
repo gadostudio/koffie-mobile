@@ -36,11 +36,7 @@ class AuthActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
 
         authViewModel.authenticationFlow.onEach { user ->
-            if (user?.isRegistered == false) {
-                val action = SignInFragmentDirections
-                    .actionNavigationAuthSigninToNavigationAuthRegistration()
-                navController.navigate(action)
-            } else if (user !== null) {
+            if (user !== null && user.isRegistered) {
                 val intent = Intent(this, MainActivity::class.java)
                 intent.flags =
                     Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK

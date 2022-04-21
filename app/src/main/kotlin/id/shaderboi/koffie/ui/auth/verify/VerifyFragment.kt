@@ -17,9 +17,11 @@ import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
 import id.shaderboi.koffie.R
 import id.shaderboi.koffie.databinding.FragmentVerifyBinding
+import id.shaderboi.koffie.ui.auth.signin.SignInFragmentDirections
 import id.shaderboi.koffie.ui.auth.verify.view_model.VerifyEvent
 import id.shaderboi.koffie.ui.auth.verify.view_model.VerifyUIEvent
 import id.shaderboi.koffie.ui.auth.verify.view_model.VerifyViewModel
+import id.shaderboi.koffie.ui.common.view_model.AuthViewModel
 import id.shaderboi.koffie.ui.main.MainActivity
 import id.shaderboi.koffie.util.StringDisplay
 import io.noties.markwon.Markwon
@@ -33,6 +35,8 @@ class VerifyFragment : Fragment() {
     val binding get() = _binding!!
 
     private val verifyViewModel by viewModels<VerifyViewModel>()
+    private val authViewModel by viewModels<AuthViewModel>()
+
     val args by navArgs<VerifyFragmentArgs>()
 
     @Inject
@@ -54,40 +58,54 @@ class VerifyFragment : Fragment() {
     private fun collectUIEvent() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                verifyViewModel.uiFlow.collectLatest { event ->
-                    when (event) {
-                        is VerifyUIEvent.ShownErrorMessage -> {
-                            binding.textViewErrorMessage.isVisible = true
-                            binding.textViewErrorMessage.text = when (event.message) {
-                                is StringDisplay.String -> event.message.string
-                                is StringDisplay.StringRes -> requireContext().getString(event.message.idRes)
+                launch {
+                    verifyViewModel.uiFlow.collectLatest { event ->
+                        when (event) {
+                            is VerifyUIEvent.ShownErrorMessage -> {
+                                binding.textViewErrorMessage.isVisible = true
+                                binding.textViewErrorMessage.text = when (event.message) {
+                                    is StringDisplay.String -> event.message.string
+                                    is StringDisplay.StringRes -> requireContext().getString(event.message.idRes)
+                                }
                             }
-                        }
-                        is VerifyUIEvent.Finished -> {
-                            if (event.user.isRegistered) {
-                                val intent = Intent(requireContext(), MainActivity::class.java)
-                                intent.flags =
-                                    Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                                startActivity(intent)
-                            } else {
-                                val navController = findNavController()
-                                val action =
-                                    VerifyFragmentDirections.actionNavigationAuthVerifyToNavigationAuthRegister()
-                                navController.navigate(action)
+                            is VerifyUIEvent.Finished -> {
+                                if (event.user.isRegistered) {
+                                    val intent = Intent(requireContext(), MainActivity::class.java)
+                                    intent.flags =
+                                        Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                                    startActivity(intent)
+                                } else {
+                                    val navController = findNavController()
+                                    val action =
+                                        VerifyFragmentDirections.actionNavigationAuthVerifyToNavigationAuthRegister()
+                                    navController.navigate(action)
+                                }
                             }
-                        }
-                        is VerifyUIEvent.IsEnableInput -> event.enable.let { enable ->
-                            if (!enable) {
-                                binding.textViewErrorMessage.isVisible = false
-                            }
+                            is VerifyUIEvent.IsEnableInput -> event.enable.let { enable ->
+                                if (!enable) {
+                                    binding.textViewErrorMessage.isVisible = false
+                                }
 
-                            binding.editTextVerificationCode1.isEnabled = enable
-                            binding.editTextVerificationCode2.isEnabled = enable
-                            binding.editTextVerificationCode3.isEnabled = enable
-                            binding.editTextVerificationCode4.isEnabled = enable
-                            binding.editTextVerificationCode5.isEnabled = enable
-                            binding.editTextVerificationCode6.isEnabled = enable
-                            binding.buttonVerify.isEnabled = enable
+                                binding.editTextVerificationCode1.isEnabled = enable
+                                binding.editTextVerificationCode2.isEnabled = enable
+                                binding.editTextVerificationCode3.isEnabled = enable
+                                binding.editTextVerificationCode4.isEnabled = enable
+                                binding.editTextVerificationCode5.isEnabled = enable
+                                binding.editTextVerificationCode6.isEnabled = enable
+                                binding.buttonVerify.isEnabled = enable
+                            }
+                        }
+                    }
+                }
+
+                launch {
+                    authViewModel.authenticationFlow.collectLatest { user ->
+                        if (user?.isRegistered == false) {
+                            val navController = findNavController()
+
+                            val action = SignInFragmentDirections
+                                .actionNavigationAuthSigninToNavigationAuthRegistration()
+                            navController.navigate(action)
                         }
                     }
                 }
@@ -143,7 +161,10 @@ class VerifyFragment : Fragment() {
                 verify()
             }
 
-            markwon.setMarkdown(textViewPrivacyPolicy, requireContext().getString(R.string.signin_signup_agreement))
+            markwon.setMarkdown(
+                textViewPrivacyPolicy,
+                requireContext().getString(R.string.signin_signup_agreement)
+            )
         }
     }
 

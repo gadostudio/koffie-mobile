@@ -17,6 +17,7 @@ import id.shaderboi.koffie.databinding.FragmentSigninBinding
 import id.shaderboi.koffie.ui.auth.signin.view_model.SignInEvent
 import id.shaderboi.koffie.ui.auth.signin.view_model.SignInUIEvent
 import id.shaderboi.koffie.ui.auth.signin.view_model.SignInViewModel
+import id.shaderboi.koffie.ui.common.view_model.AuthViewModel
 import id.shaderboi.koffie.util.StringDisplay
 import io.noties.markwon.Markwon
 import kotlinx.coroutines.flow.collectLatest
@@ -29,6 +30,7 @@ class SignInFragment : Fragment() {
     val binding get() = _binding!!
 
     private val signInViewModel by viewModels<SignInViewModel>()
+    private val authViewModel by viewModels<AuthViewModel>()
 
     @Inject
     lateinit var markwon: Markwon
@@ -49,30 +51,44 @@ class SignInFragment : Fragment() {
     private fun collectUIEvent() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                signInViewModel.uiFlow.collectLatest { event ->
-                    when (event) {
-                        is SignInUIEvent.ShowErrorMessage -> {
-                            binding.textViewErrorMessage.isVisible = true
-                            binding.textViewErrorMessage.text = when (event.message) {
-                                is StringDisplay.String -> event.message.string
-                                is StringDisplay.StringRes -> requireContext().getString(event.message.idRes)
+                launch {
+                    signInViewModel.uiFlow.collectLatest { event ->
+                        when (event) {
+                            is SignInUIEvent.ShowErrorMessage -> {
+                                binding.textViewErrorMessage.isVisible = true
+                                binding.textViewErrorMessage.text = when (event.message) {
+                                    is StringDisplay.String -> event.message.string
+                                    is StringDisplay.StringRes -> requireContext().getString(event.message.idRes)
+                                }
                             }
-                        }
-                        is SignInUIEvent.Finished -> {
-                            val navController = findNavController()
-                            val action = SignInFragmentDirections
-                                .actionNavigationAuthSigninToNavigationAuthVerify(
-                                    event.verificationId
-                                )
-                            navController.navigate(action)
-                        }
-                        is SignInUIEvent.IsEnableInput -> event.enable.let { enable ->
-                            if (!enable) {
-                                binding.textViewErrorMessage.isVisible = false
+                            is SignInUIEvent.Finished -> {
+                                val navController = findNavController()
+                                val action = SignInFragmentDirections
+                                    .actionNavigationAuthSigninToNavigationAuthVerify(
+                                        event.verificationId
+                                    )
+                                navController.navigate(action)
                             }
+                            is SignInUIEvent.IsEnableInput -> event.enable.let { enable ->
+                                if (!enable) {
+                                    binding.textViewErrorMessage.isVisible = false
+                                }
 
-                            binding.buttonSigninSignup.isEnabled = enable
-                            binding.editTextPhoneNumber.isEnabled = enable
+                                binding.buttonSigninSignup.isEnabled = enable
+                                binding.editTextPhoneNumber.isEnabled = enable
+                            }
+                        }
+                    }
+                }
+
+                launch {
+                    authViewModel.authenticationFlow.collectLatest { user ->
+                        if (user?.isRegistered == false) {
+                            val navController = findNavController()
+
+                            val action = SignInFragmentDirections
+                                .actionNavigationAuthSigninToNavigationAuthRegistration()
+                            navController.navigate(action)
                         }
                     }
                 }
