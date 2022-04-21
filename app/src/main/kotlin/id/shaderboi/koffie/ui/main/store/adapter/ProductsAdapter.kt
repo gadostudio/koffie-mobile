@@ -39,7 +39,7 @@ class ProductsAdapter(
             textViewDescription.text = product.description
             textViewPrice.text = numberFormatter.format(product.price)
             product.discount?.let { discount ->
-                textViewDiscounted.text = numberFormatter.format(product.discount)
+                textViewDiscounted.text = numberFormatter.format(product.price - discount)
                 textViewPrice.paintFlags = textViewPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
             }
 

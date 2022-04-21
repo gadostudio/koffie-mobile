@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -11,6 +12,8 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import id.shaderboi.koffie.databinding.FragmentProductBinding
+import id.shaderboi.koffie.ui.product.view_model.ProductEvent
+import id.shaderboi.koffie.ui.product.view_model.ProductViewModel
 import java.text.DecimalFormat
 import javax.inject.Inject
 
@@ -20,6 +23,8 @@ class ProductFragment : BottomSheetDialogFragment() {
     val binding get() = _binding!!
 
     val args by navArgs<ProductFragmentArgs>()
+
+    private val productViewModel by viewModels<ProductViewModel>()
 
     @Inject
     lateinit var numberFormatter: DecimalFormat
@@ -45,6 +50,10 @@ class ProductFragment : BottomSheetDialogFragment() {
 
             textViewName.text = args.product.name
             textViewPrice.text = numberFormatter.format(args.product.price)
+
+            buttonAddToCart.setOnClickListener {
+                productViewModel.onEvent(ProductEvent.AddProductToCart(args.product))
+            }
 
             Picasso
                 .get()
