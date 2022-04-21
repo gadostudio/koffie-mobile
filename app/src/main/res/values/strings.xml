@@ -56,4 +56,15 @@
     <string name="total_item">Total Item:</string>
     <string name="distance">Distance</string>
     <string name="add_to_cart">Add to cart</string>
+    <string name="change_location">Change location</string>
+    <string name="delivery_location">Delivery location</string>
+    <string name="choose">Choose</string>
+    <string name="add_more">Add more</string>
+    <string name="add_other_dishes_if_you_want">Add other dishes, if you want</string>
+    <string name="need_anything_else">Need anything else?</string>
+    <string name="payment_summary">Payment Summary</string>
+    <string name="total_price">Total price</string>
+    <string name="checkout">Checkout</string>
+    <string name="yay_you_saved">Yay! You saved</string>
+    <string name="on_this_order">on this order</string>
 </resources>

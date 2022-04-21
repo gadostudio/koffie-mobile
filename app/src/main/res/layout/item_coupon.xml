@@ -13,7 +13,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="@drawable/divider8dp"
+        android:divider="@drawable/spacer8dp"
         android:orientation="vertical"
         android:showDividers="middle">
 

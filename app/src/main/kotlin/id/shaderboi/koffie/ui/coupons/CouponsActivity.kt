@@ -71,7 +71,7 @@ class CouponsActivity : AppCompatActivity() {
 
         val dividerItemDecoration = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
         dividerItemDecoration.setDrawable(
-            ContextCompat.getDrawable(this, R.drawable.divider8dp)!!
+            ContextCompat.getDrawable(this, R.drawable.spacer8dp)!!
         );
         binding.recyclerViewCoupons.apply {
             addItemDecoration(dividerItemDecoration)

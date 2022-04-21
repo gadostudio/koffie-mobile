@@ -1,6 +1,7 @@
 package id.shaderboi.koffie.ui.main.store.adapter
 
 import android.graphics.Paint
+import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -40,7 +41,10 @@ class ProductsAdapter(
             textViewPrice.text = numberFormatter.format(product.price)
             product.discount?.let { discount ->
                 textViewDiscounted.text = numberFormatter.format(product.price - discount)
-                textViewPrice.paintFlags = textViewPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                textViewPrice.apply {
+                    setTypeface(null, Typeface.NORMAL)
+                    paintFlags = textViewPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                }
             }
 
             Picasso.get()

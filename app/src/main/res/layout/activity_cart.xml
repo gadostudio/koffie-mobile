@@ -6,145 +6,292 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ScrollView
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:liftOnScroll="true">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="12dp"
+            android:minHeight="?attr/actionBarSize"
+            app:layout_collapseMode="pin"
+            app:title="Orders" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:divider="@drawable/divider16dp"
+            android:divider="@drawable/spacer16dp"
             android:orientation="vertical"
+            android:paddingStart="16dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="16dp"
             android:showDividers="middle">
 
-            <include
-                android:id="@+id/includeViewPromo"
-                layout="@layout/view_promo" />
-
-            <FrameLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp">
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:background="@drawable/round_bordered8dp"
-                    android:divider="@drawable/divider16dp"
-                    android:gravity="center_vertical"
+                    android:divider="@drawable/horizontal_divider8dp"
                     android:orientation="vertical"
-                    android:paddingStart="20dp"
-                    android:paddingTop="10dp"
-                    android:paddingEnd="20dp"
-                    android:paddingBottom="10dp"
+                    android:paddingStart="16dp"
+                    android:paddingTop="12dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="12dp"
                     android:showDividers="middle">
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Payment Summary"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:divider="@drawable/spacer8dp"
+                        android:gravity="center_vertical"
+                        android:showDividers="middle">
+
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            app:srcCompat="@drawable/ic_baseline_airplane_ticket_24" />
+
+                        <TextView
+                            android:id="@+id/textViewOrderType"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textStyle="bold"
+                            tools:text="Delivery" />
+
+                        <Button
+                            android:id="@+id/buttonChooseOrderType"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/choose" />
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:divider="@drawable/divider8dp"
+                        android:divider="@drawable/spacer8dp"
                         android:orientation="vertical"
                         android:showDividers="middle">
 
-                        <include
-                            android:id="@+id/includeItemProductsPrice"
-                            layout="@layout/item_price" />
-
-                        <include
-                            android:id="@+id/includeItemDeliveryFee"
-                            layout="@layout/item_price" />
-
                         <com.google.android.flexbox.FlexboxLayout
-                            android:id="@+id/flexboxLayoutTotalPayment"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:alignItems="center"
                             app:flexDirection="row"
                             app:justifyContent="space_between">
 
                             <TextView
+                                android:id="@+id/textViewDeliveryLocation"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Total price"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
+                                android:text="@string/delivery_location"
+                                android:textStyle="normal" />
 
-                            <LinearLayout
-                                android:id="@+id/linearLayoutDeliveryFee"
+                            <Button
+                                android:id="@+id/buttonChangeLocation"
                                 android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:orientation="horizontal">
+                                android:layout_height="wrap_content"
+                                android:text="@string/change_location" />
 
-                                <TextView
-                                    android:id="@+id/textViewDeliveryFee"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textSize="16sp"
-                                    tools:text="10.000" />
-                            </LinearLayout>
                         </com.google.android.flexbox.FlexboxLayout>
+
+                        <TextView
+                            android:id="@+id/textViewDeliveryAddress"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            tools:text="Jalan Something No 12" />
 
                     </LinearLayout>
 
                 </LinearLayout>
-            </FrameLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/round_bordered8dp"
+                android:divider="@drawable/horizontal_divider8dp"
+                android:paddingStart="16dp"
+                android:paddingTop="12dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="12dp"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewCartItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:itemCount="1"
+                    tools:listitem="@layout/item_product_checkout" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:divider="@drawable/spacer16dp"
+                    android:gravity="center_vertical"
+                    android:showDividers="middle">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/need_anything_else"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/add_other_dishes_if_you_want" />
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/buttonAddMore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/add_more" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <include
+                android:id="@+id/includeViewPromo"
+                layout="@layout/view_promo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_bordered8dp"
+                android:divider="@drawable/spacer8dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingStart="18dp"
+                android:paddingTop="12dp"
+                android:paddingEnd="18dp"
+                android:paddingBottom="12dp"
+                android:showDividers="middle">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/payment_summary"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:divider="@drawable/spacer8dp"
+                    android:orientation="vertical"
+                    android:showDividers="middle">
+
+                    <include
+                        android:id="@+id/includeItemProductsPrice"
+                        layout="@layout/item_price" />
+
+                    <include
+                        android:id="@+id/includeItemDeliveryFee"
+                        layout="@layout/item_price" />
+
+                    <com.google.android.flexbox.FlexboxLayout
+                        android:id="@+id/flexboxLayoutTotalPayment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:flexDirection="row"
+                        app:justifyContent="space_between">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/total_price"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:id="@+id/linearLayoutDeliveryFee"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/textViewDeliveryFee"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="16sp"
+                                tools:text="10.000" />
+                        </LinearLayout>
+                    </com.google.android.flexbox.FlexboxLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:id="@+id/linearLayoutPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:divider="@drawable/divider16dp"
-            android:orientation="horizontal"
-            android:showDividers="middle">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Total Payment" />
-
-            <TextView
-                android:id="@+id/text_view_discounted"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                tools:text="100.000" />
-        </LinearLayout>
+        android:divider="@drawable/spacer8dp"
+        android:elevation="12dp"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="8dp"
+        android:showDividers="middle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <Button
             android:id="@+id/buttonCheckout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Checkout" />
+            android:text="@string/checkout" />
 
         <LinearLayout
-            android:id="@+id/linearLayoutTotalPrice"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:divider="@drawable/divider16dp"
+            android:divider="@drawable/spacer8dp"
+            android:gravity="center"
             android:orientation="horizontal"
             android:showDividers="middle">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Yay! You saved" />
+                android:text="@string/yay_you_saved" />
 
             <TextView
                 android:id="@+id/textViewPriceDiscountTotalAmount"
@@ -156,8 +303,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="on this order" />
+                android:layout_marginTop="1dp"
+                android:text="@string/on_this_order" />
         </LinearLayout>
     </LinearLayout>
+
+
 </LinearLayout>

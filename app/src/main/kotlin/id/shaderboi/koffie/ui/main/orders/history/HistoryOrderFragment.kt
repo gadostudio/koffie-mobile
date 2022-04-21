@@ -81,7 +81,7 @@ class HistoryOrderFragment : Fragment() {
         val dividerItemDecoration =
             DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
         dividerItemDecoration.setDrawable(
-            ContextCompat.getDrawable(requireContext(), R.drawable.divider8dp)!!
+            ContextCompat.getDrawable(requireContext(), R.drawable.spacer8dp)!!
         );
         binding.recyclerViewHistoryOrder.apply {
             addItemDecoration(dividerItemDecoration)

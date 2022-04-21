@@ -6,7 +6,7 @@
     android:id="@+id/constraintLayoutMain"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:divider="@drawable/divider8dp"
+    android:divider="@drawable/spacer8dp"
     android:orientation="horizontal"
     android:paddingStart="15dp"
     android:paddingTop="15dp"
