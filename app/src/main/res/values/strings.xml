@@ -23,7 +23,7 @@
     <string name="misc">Misc</string>
     <string name="phone_number">Phone number</string>
     <string name="signin_signup">Signin / Signup</string>
-    <string name="signin_signup_agreement">By signin or signup to our app, you are giving your consent and agree to our Term of Service and Privacy Policy</string>
+    <string name="signin_signup_agreement">By signin or signup to our app, you are giving your consent and agree to our [Term of Service](https://shaderboi.id) and Privacy Policy</string>
     <string name="verify">Verify</string>
     <string name="dummy_phone_number">812XXXXXXXX</string>
     <string name="sign_out">Sign Out</string>

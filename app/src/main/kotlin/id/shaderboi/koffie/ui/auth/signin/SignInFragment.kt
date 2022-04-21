@@ -12,13 +12,16 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
+import id.shaderboi.koffie.R
 import id.shaderboi.koffie.databinding.FragmentSigninBinding
 import id.shaderboi.koffie.ui.auth.signin.view_model.SignInEvent
 import id.shaderboi.koffie.ui.auth.signin.view_model.SignInUIEvent
 import id.shaderboi.koffie.ui.auth.signin.view_model.SignInViewModel
 import id.shaderboi.koffie.util.StringDisplay
+import io.noties.markwon.Markwon
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class SignInFragment : Fragment() {
@@ -26,6 +29,9 @@ class SignInFragment : Fragment() {
     val binding get() = _binding!!
 
     private val signInViewModel by viewModels<SignInViewModel>()
+
+    @Inject
+    lateinit var markwon: Markwon
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -75,10 +81,13 @@ class SignInFragment : Fragment() {
     }
 
     private fun setupView() {
-        binding.buttonSigninSignup.setOnClickListener {
-            val phoneNumberText = binding.editTextPhoneNumber.text.toString()
-            val phoneNumber = "+62${phoneNumberText}"
-            signInViewModel.onEvent(SignInEvent.SignIn(phoneNumber, requireActivity()))
+        binding.apply {
+            buttonSigninSignup.setOnClickListener {
+                val phoneNumberText = binding.editTextPhoneNumber.text.toString()
+                val phoneNumber = "+62${phoneNumberText}"
+                signInViewModel.onEvent(SignInEvent.SignIn(phoneNumber, requireActivity()))
+            }
+            markwon.setMarkdown(textViewPrivacyPolicy, requireContext().getString(R.string.signin_signup_agreement))
         }
     }
 }

@@ -15,14 +15,17 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
+import id.shaderboi.koffie.R
 import id.shaderboi.koffie.databinding.FragmentVerifyBinding
 import id.shaderboi.koffie.ui.auth.verify.view_model.VerifyEvent
 import id.shaderboi.koffie.ui.auth.verify.view_model.VerifyUIEvent
 import id.shaderboi.koffie.ui.auth.verify.view_model.VerifyViewModel
 import id.shaderboi.koffie.ui.main.MainActivity
 import id.shaderboi.koffie.util.StringDisplay
+import io.noties.markwon.Markwon
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class VerifyFragment : Fragment() {
@@ -31,6 +34,9 @@ class VerifyFragment : Fragment() {
 
     private val verifyViewModel by viewModels<VerifyViewModel>()
     val args by navArgs<VerifyFragmentArgs>()
+
+    @Inject
+    lateinit var markwon: Markwon
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -90,50 +96,54 @@ class VerifyFragment : Fragment() {
     }
 
     private fun setupView() {
-        binding.editTextVerificationCode1.requestFocus()
-        binding.editTextVerificationCode1.doOnTextChanged { text, start, before, count ->
-            if (count > 0) {
-                binding.editTextVerificationCode2.requestFocus()
+        binding.apply {
+            editTextVerificationCode1.requestFocus()
+            editTextVerificationCode1.doOnTextChanged { text, start, before, count ->
+                if (count > 0) {
+                    editTextVerificationCode2.requestFocus()
+                }
             }
-        }
-        binding.editTextVerificationCode2.doOnTextChanged { text, start, before, count ->
-            if (count == 0) {
-                binding.editTextVerificationCode1.requestFocus()
-            } else {
-                binding.editTextVerificationCode3.requestFocus()
+            editTextVerificationCode2.doOnTextChanged { text, start, before, count ->
+                if (count == 0) {
+                    editTextVerificationCode1.requestFocus()
+                } else {
+                    editTextVerificationCode3.requestFocus()
+                }
             }
-        }
-        binding.editTextVerificationCode3.doOnTextChanged { text, start, before, count ->
-            if (count == 0) {
-                binding.editTextVerificationCode2.requestFocus()
-            } else {
-                binding.editTextVerificationCode4.requestFocus()
+            editTextVerificationCode3.doOnTextChanged { text, start, before, count ->
+                if (count == 0) {
+                    editTextVerificationCode2.requestFocus()
+                } else {
+                    editTextVerificationCode4.requestFocus()
+                }
             }
-        }
-        binding.editTextVerificationCode4.doOnTextChanged { text, start, before, count ->
-            if (count == 0) {
-                binding.editTextVerificationCode3.requestFocus()
-            } else {
-                binding.editTextVerificationCode5.requestFocus()
+            editTextVerificationCode4.doOnTextChanged { text, start, before, count ->
+                if (count == 0) {
+                    editTextVerificationCode3.requestFocus()
+                } else {
+                    editTextVerificationCode5.requestFocus()
+                }
             }
-        }
-        binding.editTextVerificationCode5.doOnTextChanged { text, start, before, count ->
-            if (count == 0) {
-                binding.editTextVerificationCode4.requestFocus()
-            } else {
-                binding.editTextVerificationCode6.requestFocus()
+            editTextVerificationCode5.doOnTextChanged { text, start, before, count ->
+                if (count == 0) {
+                    editTextVerificationCode4.requestFocus()
+                } else {
+                    editTextVerificationCode6.requestFocus()
+                }
             }
-        }
-        binding.editTextVerificationCode6.doOnTextChanged { text, start, before, count ->
-            if (count == 0) {
-                binding.editTextVerificationCode5.requestFocus()
-            } else {
+            editTextVerificationCode6.doOnTextChanged { text, start, before, count ->
+                if (count == 0) {
+                    editTextVerificationCode5.requestFocus()
+                } else {
+                    verify()
+                }
+            }
+
+            buttonVerify.setOnClickListener {
                 verify()
             }
-        }
 
-        binding.buttonVerify.setOnClickListener {
-            verify()
+            markwon.setMarkdown(textViewPrivacyPolicy, requireContext().getString(R.string.signin_signup_agreement))
         }
     }
 
